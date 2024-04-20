@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-const main = () => {
+const Main = () => {
   const router = useRouter();
 
   //Redirects user to the Entrance page of this app
@@ -13,4 +13,4 @@ const main = () => {
   return null;
 };
 
-export default main;
+export default Main;

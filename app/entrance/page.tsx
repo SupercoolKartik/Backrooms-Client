@@ -8,14 +8,15 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 
 //Schema of form
-export const entranceSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be of atleast 2 characters",
-  }),
-  room: z.string().min(2, {
-    message: "Room name must be of atleast 2 characters",
-  }),
-});
+// export const entranceSchema = z.object({
+//   username: z.string().min(2, {
+//     message: "Username must be of atleast 2 characters",
+//   }),
+//   room: z.string().min(2, {
+//     message: "Room name must be of atleast 2 characters",
+//   }),
+// });
+
 //Exporting componenets to butis the form
 import { Button } from "@/components/ui/button";
 import {
@@ -34,14 +35,14 @@ const Entrance = () => {
   const router = useRouter();
 
   const form = useForm({
-    resolver: zodResolver(entranceSchema),
+    //resolver: zodResolver(entranceSchema),
     defaultValues: {
       username: "",
       room: "",
     },
   });
-
-  const onSubmit = (vals: z.infer<typeof entranceSchema>) => {
+  // z.infer<typeof entranceSchema>;
+  const onSubmit = (vals: { username: string; room: string }) => {
     const { username, room } = vals;
     localStorage.setItem("name", username);
     localStorage.setItem("room", room);
