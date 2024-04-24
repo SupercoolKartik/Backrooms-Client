@@ -29,6 +29,18 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
+//Imports for the Drawer
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+
 const Room = () => {
   const router = useRouter();
 
@@ -36,6 +48,8 @@ const Room = () => {
   const { getTime, socket, setSocket, leavingRoom } = useAppContext();
   const [ls_name, setName] = useState<string | null>(null);
   const [ls_room, setRoom] = useState<string | null>(null);
+  const [isMembersDrawerOpen, setIsMembersDrawerOpen] = useState(false);
+  const [isAboutDrawerOpen, setIsAboutDrawerOpen] = useState(false);
 
   const messagesRef = useRef<HTMLUListElement>(null);
   // const chatRef = useRef<HTMLDivElement>(null);
@@ -183,28 +197,48 @@ const Room = () => {
       </form>
     );
   };
+  const toggleMembersDrawer = () => {
+    isMembersDrawerOpen == true
+      ? setIsMembersDrawerOpen(false)
+      : setIsMembersDrawerOpen(true);
+  };
+  const toggleAboutDrawer = () => {
+    isAboutDrawerOpen == true
+      ? setIsAboutDrawerOpen(false)
+      : setIsAboutDrawerOpen(true);
+  };
+
+  // const closeDrawer = () => {
+  //   setIsDrawerOpen(false);
+  // };
 
   return (
     <div className="flex flex-col h-screen ">
       <NavigationMenu className="bg-yellow-600 flex justify-between items-center px-3 rounded-bl-md rounded-br-md shadow-2xl">
         {/* Logo */}
         <div className="py-2">
-          <div className="flex flex-col text-blue-950 font-bold  text-xl md:text-2xl ">
+          <div className="flex flex-col text-blue-950 font-bold  text-xl">
             Backrooms
           </div>
           <div className="text-xs font-semibold">
-            ROOM:{ls_room?.toUpperCase()}
+            ROOM: {ls_room?.toUpperCase()}
           </div>
         </div>
 
         {/* Navigation Items */}
         <NavigationMenuList className="flex">
           {/* Room Information */}
-          <NavigationMenuItem className="hidden sm:block font-semibold hover:text-purple-950   /*hover:bg-yellow-300 hover:text-gray-300*/ py-4 px-1 hover:border-b-4 hover:border-gray-300">
+          <NavigationMenuItem
+            onClick={toggleMembersDrawer}
+            className="hidden sm:block font-semibold hover:text-purple-950   /*hover:bg-yellow-300 hover:text-gray-300*/ py-4 px-1 hover:border-b-4 hover:border-gray-300 hover:cursor-pointer"
+          >
             Room Members
           </NavigationMenuItem>
           {/* About */}
-          <NavigationMenuItem className="hidden sm:block text-md font-semibold hover:text-purple-950  /*hover:bg-yellow-200*/ py-4 px-1 hover:border-b-4 hover:border-gray-300">
+          <NavigationMenuItem
+            onClick={toggleAboutDrawer}
+            className="hidden sm:block text-md font-semibold hover:text-purple-950  /*hover:bg-yellow-200*/ py-4 px-1 hover:border-b-4  hover:border-gray-300 hover:cursor-pointer"
+          >
             About
           </NavigationMenuItem>
           {/* Leave Room Button */}
@@ -230,18 +264,36 @@ const Room = () => {
               </Button>
               <SheetContent>
                 <SheetHeader>
-                  <SheetTitle>Are you absolutely sure?</SheetTitle>
-                  <SheetDescription>
-                    This action cannot be undone. This will permanently delete
-                    your account and remove your data from our servers.
-                  </SheetDescription>
+                  <SheetTitle className="mt-4 font-bold text-blue-950">
+                    Backrooms
+                  </SheetTitle>
                 </SheetHeader>
+                <ul className="pt-6 ">
+                  <li
+                    onClick={toggleMembersDrawer}
+                    className="flex flex-row items-center mt-1 py-2 px-2 bg-yellow-400  font-semibold hover:bg-yellow-600 hover:text-blue-800 hover:cursor-pointer rounded-sm"
+                  >
+                    Room Members
+                  </li>
+                  <li
+                    onClick={toggleAboutDrawer}
+                    className="flex flex-row items-center mt-1 py-2 px-2 bg-yellow-400  font-semibold hover:bg-yellow-600 hover:text-blue-800 hover:cursor-pointer rounded-sm"
+                  >
+                    About
+                  </li>
+                  <li
+                    onClick={leavingRoom}
+                    className="flex flex-row items-center space-x-1 mt-4 py-2 px-2 bg-red-600  font-semibold hover:bg-red-700 text-white hover:text-white hover:cursor-pointer rounded-sm"
+                  >
+                    <RiLogoutBoxLine className="inline font-bold text-2xl" />{" "}
+                    <span>Leave Room</span>
+                  </li>
+                </ul>
               </SheetContent>
             </Sheet>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-
       <div
         className="chatbox relative z-0 overflow-y-auto h-full mb-12 "
         id="chatbox"
@@ -254,6 +306,55 @@ const Room = () => {
         ></ul>
       </div>
       {formComp()}
+      //Drawer to show the Room Members
+      <Drawer open={isMembersDrawerOpen}>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>Active Members</DrawerTitle>
+          </DrawerHeader>
+          <DrawerFooter>
+            <ul>
+              <li>Member 1</li>
+              <li>Member 2</li>
+              <li>Member 3</li>
+              <li>Member 4</li>
+              <li>Member 5</li>
+              <li>Member 6</li>
+              <li>Member 7</li>
+              <li>Member 8</li>
+              <li>Member 9</li>
+            </ul>
+            <DrawerClose>
+              <Button
+                onClick={toggleMembersDrawer}
+                size="sm"
+                variant="backrooms"
+              >
+                Close
+              </Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+      //Drawer to show the app description
+      <Drawer open={isAboutDrawerOpen}>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>About</DrawerTitle>
+            <DrawerDescription className="text-red-900">
+              This is a chat app developed by Suraj Kr Saw
+            </DrawerDescription>
+          </DrawerHeader>
+          <DrawerFooter>
+            <p></p>
+            <DrawerClose>
+              <Button onClick={toggleAboutDrawer} size="sm" variant="backrooms">
+                Close
+              </Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
     </div>
   );
 };
