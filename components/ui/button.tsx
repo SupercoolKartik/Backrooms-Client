@@ -21,6 +21,8 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         backrooms:
           "text-primary-foreground shadow bg-orange-500 hover:bg-orange-600",
+        burger:
+          "text-primary-foreground shadow bg-yellow-600 hover:bg-yellow-500",
       },
       size: {
         default: "h-9 px-4 py-2",

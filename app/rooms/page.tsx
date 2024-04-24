@@ -3,6 +3,31 @@ import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useAppContext } from "@/context/globalcontext";
 import io from "socket.io-client";
+import { RiLogoutBoxLine } from "react-icons/ri";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { Button } from "@/components/ui/button";
+
+//Imports for the Navbar component
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
+
+//Imports for the Sidebar/Sheet
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const Room = () => {
   const router = useRouter();
@@ -160,14 +185,63 @@ const Room = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen relative">
-      <nav className="flex justify-between w-full bg-blue-800 text-white p-4 sticky top-0 z-10">
-        <h1 className="font-bold text-lg text-yellow-400">Backrooms</h1>
-        <span>Room: {ls_room}</span>
-        <button className="bg-orange-400 px-1 rounded-sm" onClick={leavingRoom}>
-          Leave Room
-        </button>
-      </nav>
+    <div className="flex flex-col h-screen ">
+      <NavigationMenu className="bg-yellow-600 flex justify-between items-center px-3 rounded-bl-md rounded-br-md shadow-2xl">
+        {/* Logo */}
+        <div className="py-2">
+          <div className="flex flex-col text-blue-950 font-bold  text-xl md:text-2xl ">
+            Backrooms
+          </div>
+          <div className="text-xs font-semibold">
+            ROOM:{ls_room?.toUpperCase()}
+          </div>
+        </div>
+
+        {/* Navigation Items */}
+        <NavigationMenuList className="flex">
+          {/* Room Information */}
+          <NavigationMenuItem className="hidden sm:block font-semibold hover:text-purple-950   /*hover:bg-yellow-300 hover:text-gray-300*/ py-4 px-1 hover:border-b-4 hover:border-gray-300">
+            Room Members
+          </NavigationMenuItem>
+          {/* About */}
+          <NavigationMenuItem className="hidden sm:block text-md font-semibold hover:text-purple-950  /*hover:bg-yellow-200*/ py-4 px-1 hover:border-b-4 hover:border-gray-300">
+            About
+          </NavigationMenuItem>
+          {/* Leave Room Button */}
+          <NavigationMenuItem className="hidden sm:block ps-2">
+            <Button
+              variant="destructive"
+              title="Leave Room"
+              onClick={leavingRoom}
+              className="px-2 py-1 bg-red-600 text-white font-bold text-xl rounded-lg hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300"
+            >
+              <RiLogoutBoxLine />
+            </Button>
+          </NavigationMenuItem>
+          <NavigationMenuItem className="sm:hidden">
+            {/* <Button variant="burger" size="sm" className="font-bold text-xl">
+              <GiHamburgerMenu />
+            </Button> */}
+            <Sheet>
+              <Button variant="burger" size="sm" className="font-bold text-xl">
+                <SheetTrigger className="font-bold text-xl">
+                  <GiHamburgerMenu />
+                </SheetTrigger>
+              </Button>
+              <SheetContent>
+                <SheetHeader>
+                  <SheetTitle>Are you absolutely sure?</SheetTitle>
+                  <SheetDescription>
+                    This action cannot be undone. This will permanently delete
+                    your account and remove your data from our servers.
+                  </SheetDescription>
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+
       <div
         className="chatbox relative z-0 overflow-y-auto h-full mb-12 "
         id="chatbox"
@@ -183,5 +257,11 @@ const Room = () => {
     </div>
   );
 };
+
+// export default Room;
+//       {formComp()}
+//     </div>
+//   );
+// };
 
 export default Room;
