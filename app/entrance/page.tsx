@@ -2,10 +2,9 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAppContext } from "@/context/globalcontext";
-import { z } from "zod";
-//import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import Link from "next/link";
+//import { z } from "zod";
+//import { zodResolver } from "@hookform/resolvers/zod";
 
 //Schema of form
 // export const entranceSchema = z.object({
@@ -17,7 +16,7 @@ import Link from "next/link";
 //   }),
 // });
 
-//Exporting componenets to butis the form
+//Importing componenets to butis the form
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -30,6 +29,16 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 //npx shadcn-ui@latest add input
+
+//Importing components needed for Card
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 const Entrance = () => {
   const router = useRouter();
@@ -51,48 +60,69 @@ const Entrance = () => {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
-          <FormField
-            control={form.control}
-            name="username"
-            render={({ field }) => (
-              <>
-                <FormItem>
-                  <FormLabel>Enter Name</FormLabel>
-                  <FormControl>
-                    <Input type="text" placeholder="Dohn Joe" {...field} />
-                  </FormControl>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-yellow-100">
+      <Card className="flex flex-col justify-center items-center rounded-md">
+        <CardHeader>
+          <CardTitle className="text-blue-900 text-lg font-bold">
+            BACKROOMS
+          </CardTitle>
+          {/* <CardDescription>Enter details to continue..</CardDescription> */}
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+              <FormField
+                control={form.control}
+                name="username"
+                render={({ field }) => (
+                  <>
+                    <FormItem>
+                      <FormLabel>Enter Name</FormLabel>
+                      <FormControl>
+                        <Input
+                          className="bg-yellow-50 rounded-sm"
+                          type="text"
+                          placeholder="Dohn Joe"
+                          {...field}
+                        />
+                      </FormControl>
 
-                  <FormMessage />
-                </FormItem>
-              </>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="room"
-            render={({ field }) => (
-              <>
-                <FormItem>
-                  <FormLabel>Enter Room</FormLabel>
-                  <FormControl>
-                    <Input type="text" placeholder="Room_105" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              </>
-            )}
-          />
-          {/* <Link href={"/forgot"} className="flex items-end justify-end">
+                      <FormMessage />
+                    </FormItem>
+                  </>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="room"
+                render={({ field }) => (
+                  <>
+                    <FormItem>
+                      <FormLabel>Enter Room</FormLabel>
+                      <FormControl>
+                        <Input
+                          className="bg-yellow-50 rounded-sm"
+                          type="text"
+                          placeholder="Room 105"
+                          {...field}
+                        />
+                      </FormControl>
+
+                      <FormMessage />
+                    </FormItem>
+                  </>
+                )}
+              />
+              {/* <Link href={"/forgot"} className="flex items-end justify-end">
             <p className="text-red-500 text-xs font-semibold hover:text-red-600 ">
               Forgot Password?
             </p>
           </Link> */}
-          <Button type="submit">Submit</Button>
-        </form>
-      </Form>
+              <Button type="submit">Submit</Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
     </main>
   );
 };
