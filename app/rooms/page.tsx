@@ -173,30 +173,11 @@ const Room = () => {
     };
   }, []);
 
-  const formComp = () => {
-    return (
-      <form
-        onSubmit={handleSubmit}
-        className="w-full flex fixed bottom-0 justify-end items-end px-3 py-1 bg-gray-900 shadow-md z-10"
-      >
-        <input
-          type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          id="input"
-          name="input"
-          className="w-full px-4 py-2 mr-2 bg-gray-800 text-white focus:outline-none focus:bg-gray-700 rounded"
-          placeholder="Enter your message..."
-        />
-        <button
-          type="submit"
-          className="px-4 py-2 bg-blue-600 text-white rounded"
-        >
-          Send
-        </button>
-      </form>
-    );
-  };
+  // const formComp = () => {
+  //   return (
+
+  //   );
+  // };
   const toggleMembersDrawer = () => {
     isMembersDrawerOpen == true
       ? setIsMembersDrawerOpen(false)
@@ -214,7 +195,7 @@ const Room = () => {
 
   return (
     <div className="flex flex-col h-screen ">
-      <NavigationMenu className="bg-yellow-600 flex justify-between items-center px-3 rounded-bl-md rounded-br-md shadow-2xl">
+      <NavigationMenu className="bg-yellow-600 flex justify-between items-center px-3  rounded-bl-md rounded-br-md shadow-2xl ">
         {/* Logo */}
         <div className="py-2">
           <div className="flex flex-col text-blue-950 font-bold  text-xl">
@@ -295,8 +276,9 @@ const Room = () => {
         </NavigationMenuList>
       </NavigationMenu>
       <div
-        className="chatbox relative z-0 overflow-y-auto h-full mb-12 "
+        className="chatbox relative z-0 overflow-y-auto h-full bg-yellow-100"
         id="chatbox"
+        // style={{ backgroundImage: "url('app/roomsbg.webp')" }} bg-cover bg-center
         // ref={chatRef}
       >
         <ul
@@ -305,8 +287,30 @@ const Room = () => {
           id="unoli"
         ></ul>
       </div>
-      {formComp()}
-      //Drawer to show the Room Members
+      <footer className="conatainer">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full flex justify-end items-end px-3 py-1 bg-gray-900 shadow-md z-10"
+        >
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            id="input"
+            name="input"
+            className="w-full px-4 py-2 mr-2 bg-gray-800 text-white focus:outline-none focus:bg-gray-700 rounded"
+            placeholder="Enter your message..."
+          />
+          <button
+            type="submit"
+            className="px-4 py-2 bg-blue-600 text-white rounded"
+          >
+            Send
+          </button>
+        </form>
+      </footer>
+
+      {/* Drawer to show the Room Members */}
       <Drawer open={isMembersDrawerOpen}>
         <DrawerContent>
           <DrawerHeader>
@@ -336,7 +340,8 @@ const Room = () => {
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
-      //Drawer to show the app description
+
+      {/*Drawer to show the app description*/}
       <Drawer open={isAboutDrawerOpen}>
         <DrawerContent>
           <DrawerHeader>
