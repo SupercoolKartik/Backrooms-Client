@@ -60,8 +60,8 @@ const Entrance = () => {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-yellow-100">
-      <Card className="flex flex-col justify-center items-center rounded-md">
+    <main className="flex h-screen flex-col items-center justify-center bg-yellow-100">
+      <Card className="flex flex-col justify-center items-center rounded-md mx-0">
         <CardHeader>
           <CardTitle className="text-blue-900 text-lg font-bold">
             BACKROOMS
