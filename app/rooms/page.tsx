@@ -6,6 +6,8 @@ import io from "socket.io-client";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Button } from "@/components/ui/button";
+import { RiSendPlane2Fill } from "react-icons/ri";
+import { useForm } from "react-hook-form";
 
 //Imports for the Navbar component
 import {
@@ -41,6 +43,17 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+
 const Room = () => {
   const router = useRouter();
 
@@ -61,18 +74,38 @@ const Room = () => {
   //   }
   // };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // scrollToBottom();
-    if (inputValue && socket) {
-      socket.emit("sent message", {
-        name: ls_name,
-        room: ls_room,
-        message: inputValue,
-      });
-      setInputValue("");
-    }
+  const form = useForm({
+    //resolver: zodResolver(entranceSchema),
+    defaultValues: {
+      message: "",
+    },
+  });
+
+  //Submit logic for Shadcn form
+  const onSubmit = (vals: { message: string }) => {
+    const { message } = vals;
+    console.log("🔎", message);
+    socket.emit("sent message", {
+      name: ls_name,
+      room: ls_room,
+      message: message,
+    });
+    form.setValue("message", "");
   };
+
+  // Submit logic for Normal Form
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   // scrollToBottom();
+  //   if (inputValue && socket) {
+  //     socket.emit("sent message", {
+  //       name: ls_name,
+  //       room: ls_room,
+  //       message: inputValue,
+  //     });
+  //     setInputValue("");
+  //   }
+  // };
 
   useEffect(() => {
     if (!localStorage.getItem("name")) {
@@ -173,11 +206,6 @@ const Room = () => {
     };
   }, []);
 
-  // const formComp = () => {
-  //   return (
-
-  //   );
-  // };
   const toggleMembersDrawer = () => {
     isMembersDrawerOpen == true
       ? setIsMembersDrawerOpen(false)
@@ -188,10 +216,6 @@ const Room = () => {
       ? setIsAboutDrawerOpen(false)
       : setIsAboutDrawerOpen(true);
   };
-
-  // const closeDrawer = () => {
-  //   setIsDrawerOpen(false);
-  // };
 
   return (
     <div className="flex flex-col h-screen ">
@@ -288,6 +312,36 @@ const Room = () => {
         ></ul>
       </div>
       <footer className="conatainer">
+        {/* Shadcn form */}
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <div className="flex items-center rounded-t-lg bg-yellow-800 sm:py-2 py-1 px-1">
+                  <Input
+                    className="flex-grow sm:ps-3 ps-2 pe-0 py-2 rounded-lg bg-yellow-50 focus:outline-none focus:ring ring-blue-500 focus:ring-opacity-50"
+                    type="text"
+                    placeholder="Type your message..."
+                    // onChange={(event) =>form.setValue("message", event.target.value)}
+                    {...field}
+                  />
+                  <Button
+                    type="submit"
+                    variant="backrooms"
+                    className="sm:px-3 px-2 py-4 font-bold text-lg text-white rounded-lg  focus:outline-none md:ml-2 ml-1"
+                  >
+                    <RiSendPlane2Fill />
+                  </Button>
+                </div>
+              )}
+            />
+          </form>
+        </Form>
+
+        {/* Normal Form */}
+        {/* 
         <form
           onSubmit={handleSubmit}
           className="w-full flex justify-end items-end px-3 py-1 bg-gray-900 shadow-md z-10"
@@ -305,9 +359,9 @@ const Room = () => {
             type="submit"
             className="px-4 py-2 bg-blue-600 text-white rounded"
           >
-            Send
+            <RiSendPlane2Fill />
           </button>
-        </form>
+        </form> */}
       </footer>
 
       {/* Drawer to show the Room Members */}
@@ -326,7 +380,10 @@ const Room = () => {
               <li>Member 6</li>
               <li>Member 7</li>
               <li>Member 8</li>
-              <li>Member 9</li>
+              <li>
+                Note: These are all demo members, this feature is yet to be
+                implemented.
+              </li>
             </ul>
             <DrawerClose>
               <Button
@@ -346,8 +403,24 @@ const Room = () => {
         <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>About</DrawerTitle>
-            <DrawerDescription className="text-red-900">
-              This is a chat app developed by Suraj Kr Saw
+            <DrawerDescription className="text-red-900 text-sm">
+              This is Backrooms, a chat application crafted with the latest web
+              technologies to provide a seamless and interactive chatting
+              experience. Developed using Next.js and TypeScript on the
+              frontend, and Node.js and JavaScript on the backend, Backrooms
+              offers a modern and efficient platform for real-time
+              communication.
+              <br />
+              Powered by Socket.IO, Backrooms enables real-time messaging with
+              minimal latency.
+              <br />
+              Tailwind CSS and Shadcn are employed for effortless styling ,
+              enhancing the visual appeal of the application.
+              <br />
+              Join us in the world of Backrooms, where every message sent is a
+              step closer to building lasting connections and unforgettable
+              conversations. Welcome to the future of online communication.
+              Welcome to Backrooms.
             </DrawerDescription>
           </DrawerHeader>
           <DrawerFooter>
