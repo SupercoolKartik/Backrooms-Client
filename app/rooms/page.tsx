@@ -132,7 +132,7 @@ const Room = () => {
       if (room === ls_room) {
         const item = document.createElement("li");
         item.className =
-          "w-3/4 flex flex-col bg-blue-200 justify-start self-start right-2  my-1 py-2 px-2 ms-2 rounded-lg shadow-md";
+          "md:mr-36 sm:mr-20 mr-10 flex flex-col bg-blue-100 justify-start self-start right-2  my-1 py-2 px-2 ms-2 rounded-xl rounded-tl-none shadow-md";
 
         //add sender name to the chat
         const sender = document.createElement("span");
@@ -144,14 +144,14 @@ const Room = () => {
         //add the message send by room members
         const textArea = document.createElement("span");
         textArea.textContent = message;
-        textArea.className = "flex justify-start text-black font-semibold";
+        textArea.className = "flex justify-start text-black font-semibold pe-3";
         item.appendChild(textArea);
 
         //add the time at which the message is sent
         const date = document.createElement("span");
         date.textContent = getTime();
         date.className =
-          "flex justify-start text-sm font-semibold text-red-500  bottom-0";
+          "flex justify-start text-xs font-serif text-red-500 bottom-0";
         item.appendChild(date);
         if (messagesRef.current) messagesRef.current.appendChild(item);
         // scrollToBottom();
@@ -164,7 +164,7 @@ const Room = () => {
       if (room === ls_room) {
         const item = document.createElement("li");
         item.className =
-          "w-3/4 flex flex-col bg-blue-200 justify-end self-end right-2  my-1 py-1 px-2 me-2 rounded-lg shadow-md";
+          "md:ml-36 sm:ml-20 ml-10 flex flex-col bg-blue-100 justify-end self-end right-2 my-1 py-1 px-2 me-2 rounded-xl rounded-tr-none shadow-md";
 
         //add sender name ("You") to the chat
         const sender = document.createElement("span");
@@ -176,14 +176,14 @@ const Room = () => {
         //add the message send by you
         const textArea = document.createElement("span");
         textArea.textContent = message;
-        textArea.className = "flex justify-end text-black font-semibold";
+        textArea.className = "flex justify-end text-black font-semibold ps-3";
         item.appendChild(textArea);
 
         //add the time at which the message is sent
         const date = document.createElement("span");
         date.textContent = getTime();
         date.className =
-          "flex justify-end text-sm font-semibold text-red-500  bottom-0";
+          "flex justify-end text-xs font-serif text-red-500  bottom-0";
         item.appendChild(date);
         if (messagesRef.current) messagesRef.current.appendChild(item);
         // scrollToBottom();
@@ -219,7 +219,7 @@ const Room = () => {
 
   return (
     <div className="flex flex-col h-screen ">
-      <NavigationMenu className="sticky top-0 bg-yellow-600 flex justify-between items-center px-3  rounded-bl-md rounded-br-md shadow-2xl ">
+      <NavigationMenu className="sticky  top-0 bg-yellow-600 flex justify-between items-center px-3  rounded-bl-md rounded-br-md shadow-2xl ">
         {/* Logo */}
         <div className="py-2">
           <div className="flex flex-col text-blue-950 font-bold  text-xl">

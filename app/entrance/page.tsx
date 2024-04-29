@@ -61,7 +61,7 @@ const Entrance = () => {
 
   return (
     <main className="flex h-screen flex-col items-center justify-center bg-yellow-100">
-      <Card className="flex flex-col justify-center items-center rounded-md mx-0">
+      <Card className="flex flex-col justify-center items-center rounded-tr-sm rounded-bl-sm rounded-tl-3xl rounded-br-3xl mx-0">
         <CardHeader>
           <CardTitle className="text-blue-900 text-lg font-bold">
             BACKROOMS
@@ -77,12 +77,12 @@ const Entrance = () => {
                 render={({ field }) => (
                   <>
                     <FormItem>
-                      <FormLabel>Enter Name</FormLabel>
+                      <FormLabel>Name:</FormLabel>
                       <FormControl>
                         <Input
-                          className="bg-yellow-50 rounded-sm"
+                          className="bg-yellow-50 rounded-lg"
                           type="text"
-                          placeholder="Dohn Joe"
+                          placeholder="Enter your name.."
                           {...field}
                         />
                       </FormControl>
@@ -98,12 +98,12 @@ const Entrance = () => {
                 render={({ field }) => (
                   <>
                     <FormItem>
-                      <FormLabel>Enter Room</FormLabel>
+                      <FormLabel>Room:</FormLabel>
                       <FormControl>
                         <Input
-                          className="bg-yellow-50 rounded-sm"
+                          className="bg-yellow-50 rounded-lg"
                           type="text"
-                          placeholder="Room 105"
+                          placeholder="Enter room name.."
                           {...field}
                         />
                       </FormControl>
