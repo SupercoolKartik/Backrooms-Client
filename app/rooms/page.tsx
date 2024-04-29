@@ -219,7 +219,7 @@ const Room = () => {
 
   return (
     <div className="flex flex-col h-screen ">
-      <NavigationMenu className="bg-yellow-600 flex justify-between items-center px-3  rounded-bl-md rounded-br-md shadow-2xl ">
+      <NavigationMenu className="sticky top-0 bg-yellow-600 flex justify-between items-center px-3  rounded-bl-md rounded-br-md shadow-2xl ">
         {/* Logo */}
         <div className="py-2">
           <div className="flex flex-col text-blue-950 font-bold  text-xl">
@@ -311,7 +311,7 @@ const Room = () => {
           id="unoli"
         ></ul>
       </div>
-      <footer className="conatainer">
+      <footer className="fixed bottom-0 left-0 right-0">
         {/* Shadcn form */}
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
