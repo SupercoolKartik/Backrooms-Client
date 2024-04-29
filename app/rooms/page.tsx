@@ -311,7 +311,7 @@ const Room = () => {
           id="unoli"
         ></ul>
       </div>
-      <footer className="fixed bottom-0 left-0 right-0">
+      <footer className="sticky bottom-0 left-0 right-0">
         {/* Shadcn form */}
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
@@ -330,7 +330,7 @@ const Room = () => {
                   <Button
                     type="submit"
                     variant="backrooms"
-                    className="sm:px-3 px-2 py-4 font-bold text-lg text-white rounded-lg  focus:outline-none md:ml-2 ml-1"
+                    className="sm:px-4 px-3 py-4 font-bold text-lg text-white rounded-lg  focus:outline-none md:ml-1 ml-0.5"
                   >
                     <RiSendPlane2Fill />
                   </Button>
