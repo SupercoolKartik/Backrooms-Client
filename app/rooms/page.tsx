@@ -3,6 +3,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useAppContext } from "@/context/globalcontext";
 import io from "socket.io-client";
+import Image from "next/image";
+import roomsbg from "../roomsbg.webp";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Button } from "@/components/ui/button";
@@ -169,14 +171,14 @@ const Room = () => {
         //add sender name ("You") to the chat
         const sender = document.createElement("span");
         sender.textContent = "You:";
-        sender.className =
-          "flex justify-end text-xs font-semibold text-red-500";
+        sender.className = "flex justify-end text-xs font-mono text-red-500";
         item.appendChild(sender);
 
         //add the message send by you
         const textArea = document.createElement("span");
         textArea.textContent = message;
-        textArea.className = "flex justify-end text-black font-semibold ps-3";
+        textArea.className =
+          "flex justify-end text-black font-normal md:font-semibold ps-3";
         item.appendChild(textArea);
 
         //add the time at which the message is sent
@@ -219,13 +221,13 @@ const Room = () => {
 
   return (
     <div className="flex flex-col h-screen ">
-      <NavigationMenu className="sticky  top-0 bg-yellow-600 flex justify-between items-center px-3  rounded-bl-md rounded-br-md shadow-2xl ">
+      <NavigationMenu className="sticky top-0 bg-yellow-700 flex justify-between items-center px-3  rounded-bl-md rounded-br-md shadow-2xl ">
         {/* Logo */}
         <div className="py-2">
-          <div className="flex flex-col text-blue-950 font-bold  text-xl">
+          <div className="flex flex-col text-blue-900 font-bold  text-xl">
             Backrooms
           </div>
-          <div className="text-xs font-semibold">
+          <div className="text-sm font-semibold font-mono">
             ROOM: {ls_room?.toUpperCase()}
           </div>
         </div>
@@ -235,14 +237,14 @@ const Room = () => {
           {/* Room Information */}
           <NavigationMenuItem
             onClick={toggleMembersDrawer}
-            className="hidden sm:block font-semibold hover:text-purple-950   /*hover:bg-yellow-300 hover:text-gray-300*/ py-4 px-1 hover:border-b-4 hover:border-gray-300 hover:cursor-pointer"
+            className="hidden sm:block font-semibold hover:text-blue-200   /*hover:bg-yellow-300 hover:text-gray-300*/ py-4 px-1 hover:border-b-4 hover:border-gray-300 hover:cursor-pointer"
           >
             Room Members
           </NavigationMenuItem>
           {/* About */}
           <NavigationMenuItem
             onClick={toggleAboutDrawer}
-            className="hidden sm:block text-md font-semibold hover:text-purple-950  /*hover:bg-yellow-200*/ py-4 px-1 hover:border-b-4  hover:border-gray-300 hover:cursor-pointer"
+            className="hidden sm:block text-md font-semibold hover:text-blue-200  /*hover:bg-yellow-200*/ py-4 px-1 hover:border-b-4  hover:border-gray-300 hover:cursor-pointer"
           >
             About
           </NavigationMenuItem>
@@ -299,12 +301,22 @@ const Room = () => {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
+      <div>
+        <Image
+          src={roomsbg}
+          alt="background image"
+          className="w-full -z-10"
+          width={100}
+          height={100}
+        />
+      </div>
       <div
         className="chatbox relative z-0 overflow-y-auto h-full bg-yellow-100"
         id="chatbox"
         // style={{ backgroundImage: "url('app/roomsbg.webp')" }} bg-cover bg-center
         // ref={chatRef}
       >
+        
         <ul
           className="flex flex-col text-white"
           ref={messagesRef}
