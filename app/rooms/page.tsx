@@ -301,22 +301,22 @@ const Room = () => {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <div>
-        <Image
-          src={roomsbg}
-          alt="background image"
-          className="w-full -z-10"
-          width={100}
-          height={100}
-        />
-      </div>
+
       <div
         className="chatbox relative z-0 overflow-y-auto h-full bg-yellow-100"
         id="chatbox"
         // style={{ backgroundImage: "url('app/roomsbg.webp')" }} bg-cover bg-center
         // ref={chatRef}
       >
-        
+        <div>
+          <Image
+            src={roomsbg}
+            alt="background image"
+            className="w-full flex flex-grow -z-10"
+            width={100}
+            height={100}
+          />
+        </div>
         <ul
           className="flex flex-col text-white"
           ref={messagesRef}
