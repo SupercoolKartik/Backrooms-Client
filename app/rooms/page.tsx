@@ -305,20 +305,18 @@ const Room = () => {
       <div
         className="chatbox relative z-0 overflow-y-auto h-full bg-yellow-100"
         id="chatbox"
-        // style={{ backgroundImage: "url('app/roomsbg.webp')" }} bg-cover bg-center
-        // ref={chatRef}
       >
-        <div>
+        <div className="fixed inset-0 w-full h-full -z-10 filter blur-sm">
           <Image
             src={roomsbg}
             alt="background image"
-            className="w-full flex flex-grow -z-10"
-            width={100}
-            height={100}
+            className="w-full h-full object-cover"
+            layout="fill"
+            priority
           />
         </div>
         <ul
-          className="flex flex-col text-white"
+          className="flex flex-col text-white relative z-10"
           ref={messagesRef}
           id="unoli"
         ></ul>
