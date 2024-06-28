@@ -221,10 +221,10 @@ const Room = () => {
 
   return (
     <div className="flex flex-col h-screen ">
-      <NavigationMenu className="sticky top-0 bg-yellow-700 flex justify-between items-center px-3  rounded-bl-md rounded-br-md shadow-2xl ">
+      <NavigationMenu className="sticky top-0 flex justify-between items-center px-3 backdrop-blur-lg border-t border-sm border-blue-800 rounded-bl-md rounded-br-md shadow-2xl ">
         {/* Logo */}
-        <div className="py-2">
-          <div className="flex flex-col text-blue-900 font-bold  text-xl">
+        <div className="py-2 ">
+          <div className="flex flex-col text-blue-900 font-bold text-xl">
             Backrooms
           </div>
           <div className="text-sm font-semibold font-mono">
@@ -321,7 +321,7 @@ const Room = () => {
           id="unoli"
         ></ul>
       </div>
-      <footer className="sticky bottom-0 left-0 right-0">
+      <footer className="sticky bottom-0 left-0 right-0 backdrop-blur-2xl shadow-2xl">
         {/* Shadcn form */}
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
@@ -329,9 +329,9 @@ const Room = () => {
               control={form.control}
               name="message"
               render={({ field }) => (
-                <div className="flex items-center rounded-t-lg bg-yellow-800 sm:py-2 py-1 px-1">
+                <div className="flex items-center rounded-t-lg sm:py-2 py-1 px-1">
                   <Input
-                    className="flex-grow sm:ps-3 ps-2 pe-0 py-2 rounded-lg bg-yellow-50 focus:outline-none focus:ring ring-blue-500 focus:ring-opacity-50"
+                    className="flex-grow sm:ps-3 ps-2 pe-0 py-2 rounded-lg bg-yellow-100 text-blue-800 focus:outline-none focus:ring ring-blue-500 focus:ring-opacity-50"
                     type="text"
                     placeholder="Type your message..."
                     // onChange={(event) =>form.setValue("message", event.target.value)}
@@ -388,8 +388,6 @@ const Room = () => {
               <li>Member 4</li>
               <li>Member 5</li>
               <li>Member 6</li>
-              <li>Member 7</li>
-              <li>Member 8</li>
               <li>
                 Note: These are all demo members, this feature is yet to be
                 implemented.
