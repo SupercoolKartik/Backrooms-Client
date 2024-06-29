@@ -331,7 +331,7 @@ const Room = () => {
               render={({ field }) => (
                 <div className="flex items-center rounded-t-lg sm:py-2 py-1 px-1">
                   <Input
-                    className="flex-grow sm:ps-3 ps-2 pe-0 py-2 rounded-lg bg-yellow-100 text-blue-800 focus:outline-none focus:ring ring-blue-500 focus:ring-opacity-50"
+                    className="flex-grow sm:ps-3 ps-2 pe-0 py-2 rounded-lg bg-lime-200 blur-none text-blue-900 focus:outline-none focus:ring ring-blue-500 focus:ring-opacity-50"
                     type="text"
                     placeholder="Type your message..."
                     // onChange={(event) =>form.setValue("message", event.target.value)}
