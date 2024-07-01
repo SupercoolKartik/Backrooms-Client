@@ -23,6 +23,8 @@ const buttonVariants = cva(
           "text-primary-foreground shadow bg-orange-500 hover:bg-orange-600",
         burger:
           "text-primary-foreground shadow bg-yellow-600 hover:bg-yellow-500",
+        entranceForm:
+          "border border-input bg-transparent text-lime-400 shadow-sm hover:backdrop-blur-lg hover:text-lime-600",
       },
       size: {
         default: "h-9 px-4 py-2",

@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-
+import Image from "next/image";
 //import { z } from "zod";
 //import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -58,10 +58,17 @@ const Entrance = () => {
   };
 
   return (
-    <main className="flex h-screen flex-col items-center justify-center bg-yellow-100">
-      <Card className="flex flex-col justify-center items-center rounded-tr-sm rounded-bl-sm rounded-tl-3xl rounded-br-3xl mx-0">
+    <main className="flex h-screen flex-col items-center justify-center">
+      <Image
+        src="/backroomsEntranceBg.webp"
+        alt="background image"
+        className="w-full h-full object-cover -z-10 blur-sm"
+        layout="fill"
+        priority
+      />
+      <Card className="flex flex-col justify-center items-center rounded-tr-sm rounded-bl-sm rounded-tl-3xl rounded-br-3xl bg-transparent mx-0">
         <CardHeader>
-          <CardTitle className="text-blue-900 text-lg font-bold">
+          <CardTitle className="text-blue-600 text-lg font-bold">
             BACKROOMS
           </CardTitle>
         </CardHeader>
@@ -74,10 +81,10 @@ const Entrance = () => {
                 render={({ field }) => (
                   <>
                     <FormItem>
-                      <FormLabel>Name:</FormLabel>
+                      <FormLabel className="text-black">Name:</FormLabel>
                       <FormControl>
                         <Input
-                          className="bg-yellow-50 rounded-lg"
+                          className="bg-transparent backdrop-blur-lg rounded-lg text-red-600"
                           type="text"
                           placeholder="Enter your name.."
                           {...field}
@@ -95,10 +102,10 @@ const Entrance = () => {
                 render={({ field }) => (
                   <>
                     <FormItem>
-                      <FormLabel>Room:</FormLabel>
+                      <FormLabel className="text-black">Room:</FormLabel>
                       <FormControl>
                         <Input
-                          className="bg-yellow-50 rounded-lg"
+                          className="bg-transparent backdrop-blur-lg rounded-lg text-red-500"
                           type="text"
                           placeholder="Enter room name.."
                           {...field}
@@ -115,7 +122,9 @@ const Entrance = () => {
               Forgot Password?
             </p>
           </Link> */}
-              <Button type="submit">Submit</Button>
+              <Button type="submit" variant="entranceForm">
+                Submit
+              </Button>
             </form>
           </Form>
         </CardContent>
