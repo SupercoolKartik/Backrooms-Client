@@ -66,11 +66,12 @@ const Entrance = () => {
         layout="fill"
         priority
       />
+      <span className=" fixed top-5 font-bold text-blue-400">BACKROOMS</span>
       <Card className="flex flex-col justify-center items-center rounded-tr-sm rounded-bl-sm rounded-tl-3xl rounded-br-3xl bg-transparent mx-0">
         <CardHeader>
-          <CardTitle className="text-blue-600 text-lg font-bold">
+          {/* <CardTitle className="text-blue-600 text-lg font-bold">
             BACKROOMS
-          </CardTitle>
+          </CardTitle> */}
         </CardHeader>
         <CardContent>
           <Form {...form}>
