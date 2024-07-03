@@ -2,6 +2,12 @@
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
+
+import {
+  Bebas_Neue,
+  Big_Shoulders_Inline_Display,
+  Libre_Barcode_128_Text,
+} from "next/font/google";
 //import { z } from "zod";
 //import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -37,7 +43,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
+const bebasNeue = Bebas_Neue({
+  weight: "400", // Bebas Neue usually comes in only one weight
+  subsets: ["latin"],
+  display: "swap",
+});
 const Entrance = () => {
   const router = useRouter();
 
@@ -66,7 +76,11 @@ const Entrance = () => {
         layout="fill"
         priority
       />
-      <span className=" fixed top-5 font-bold text-blue-400">BACKROOMS</span>
+      <span
+        className={`${bebasNeue.className} text-3xl fixed top-5 font-bold text-blue-400`}
+      >
+        BACKROOMS
+      </span>
       <Card className="flex flex-col justify-center items-center rounded-tr-sm rounded-bl-sm rounded-tl-3xl rounded-br-3xl bg-transparent mx-0">
         <CardHeader>
           {/* <CardTitle className="text-blue-600 text-lg font-bold">
