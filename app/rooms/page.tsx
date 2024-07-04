@@ -220,12 +220,20 @@ const Room = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen ">
+    <div className="flex flex-col h-screen">
       <NavigationMenu className="sticky top-0 flex justify-between items-center px-3 backdrop-blur-lg border-t border-sm border-blue-800 rounded-bl-md rounded-br-md shadow-2xl ">
         {/* Logo */}
-        <div className="py-2 ">
-          <div className="flex flex-col text-blue-900 font-bold text-xl">
-            Backrooms
+        <div className="py-1 flex flex-col justify-center items-center">
+          <div className="relative ">
+            {/* Backrooms */}
+            <Image
+              src="/BackroomsLogo.png"
+              alt="backrooms logo"
+              className="object-contain z-20"
+              width={120} // Specify the width in pixels
+              height={50} // Specify the height in pixels
+              priority
+            />
           </div>
           <div className="text-sm font-semibold font-mono">
             ROOM: {ls_room?.toUpperCase()}
