@@ -76,10 +76,20 @@ const Entrance = () => {
         layout="fill"
         priority
       />
-      <span
+      {/* <span
         className={`${bebasNeue.className} text-3xl fixed top-5 font-bold text-blue-400`}
       >
         BACKROOMS
+      </span> */}
+      <span className="text-3xl fixed top-5 font-bold text-blue-400">
+        <Image
+          src="/BackroomsLogo.png"
+          alt="backrooms logo"
+          className="object-contain z-20"
+          width={200} // Specify the width in pixels
+          height={50} // Specify the height in pixels
+          priority
+        />
       </span>
       <Card className="flex flex-col justify-center items-center rounded-tr-sm rounded-bl-sm rounded-tl-3xl rounded-br-3xl bg-transparent mx-0">
         <CardHeader>
