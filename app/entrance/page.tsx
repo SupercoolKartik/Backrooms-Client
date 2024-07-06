@@ -68,7 +68,7 @@ const Entrance = () => {
   };
 
   return (
-    <main className="flex h-screen flex-col items-center justify-center">
+    <main className="flex h-screen flex-col items-center justify-center overflow-hidden">
       <Image
         src="/backroomsEntranceBg.webp"
         alt="background image"
