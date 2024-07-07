@@ -72,7 +72,7 @@ const Entrance = () => {
       <Image
         src="/backroomsEntranceBg.webp"
         alt="background image"
-        className="w-full h-full object-cover -z-10 blur-sm"
+        className="w-full h-full object-cover -z-10 blur-sm overflow-hidden"
         layout="fill"
         priority
       />
