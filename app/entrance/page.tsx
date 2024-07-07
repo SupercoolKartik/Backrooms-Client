@@ -109,7 +109,7 @@ const Entrance = () => {
                       <FormLabel className="text-black">Name:</FormLabel>
                       <FormControl>
                         <Input
-                          className="bg-transparent backdrop-blur-lg rounded-lg text-red-600"
+                          className="bg-transparent backdrop-blur-lg rounded-lg text-white"
                           type="text"
                           placeholder="Enter your name.."
                           {...field}
@@ -130,7 +130,7 @@ const Entrance = () => {
                       <FormLabel className="text-black">Room:</FormLabel>
                       <FormControl>
                         <Input
-                          className="bg-transparent backdrop-blur-lg rounded-lg text-red-500"
+                          className="bg-transparent backdrop-blur-lg rounded-lg text-white"
                           type="text"
                           placeholder="Enter room name.."
                           {...field}
