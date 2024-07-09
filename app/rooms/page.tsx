@@ -329,7 +329,7 @@ const Room = () => {
           id="unoli"
         ></ul>
       </div>
-      <footer className="sticky bottom-0 left-0 right-0 backdrop-blur-2xl shadow-2xl">
+      <footer className="sticky bottom-0 left-0 right-0 backdrop-blur-sm shadow-2xl">
         {/* Shadcn form */}
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
@@ -339,7 +339,7 @@ const Room = () => {
               render={({ field }) => (
                 <div className="flex items-center rounded-t-lg sm:py-2 py-1 px-1">
                   <Input
-                    className="flex-grow sm:ps-3 ps-2 pe-0 py-2 rounded-lg bg-lime-200 blur-none text-blue-900 focus:outline-none focus:ring ring-blue-500 focus:ring-opacity-50"
+                    className="flex-grow sm:ps-3 ps-2 pe-0 py-2 rounded-lg bg-transparent backdrop-blur-lg focus:backdrop-blur-sm text-blue-900 focus:outline-none focus:ring ring-blue-500 focus:ring-opacity-50"
                     type="text"
                     placeholder="Type your message..."
                     // onChange={(event) =>form.setValue("message", event.target.value)}
@@ -420,6 +420,7 @@ const Room = () => {
           <DrawerHeader>
             <DrawerTitle>About</DrawerTitle>
             <DrawerDescription className="text-red-900 text-sm">
+              <br />
               This is Backrooms, a chat application crafted with the latest web
               technologies to provide a seamless and interactive chatting
               experience. Developed using Next.js and TypeScript on the
@@ -428,10 +429,21 @@ const Room = () => {
               communication.
               <br />
               Powered by Socket.IO, Backrooms enables real-time messaging with
-              minimal latency.
+              minimal latency. Tailwind CSS and Shadcn are employed for
+              effortless styling , enhancing the visual appeal of the
+              application.
               <br />
-              Tailwind CSS and Shadcn are employed for effortless styling ,
-              enhancing the visual appeal of the application.
+              <br />
+              The theme of the app is inspired by The Backrooms which is an
+              internet concept and urban legend depicting an endless maze of
+              randomly generated, eerie office rooms characterized by yellowed
+              walls, dirty carpets, and flickering fluorescent lights.
+              Originating from a 4chan post in 2019, it describes a surreal,
+              unsettling place people might accidentally enter if they "noclip"
+              out of reality. The Backrooms has since evolved into a popular
+              online narrative, inspiring stories, games, and videos that
+              explore its infinite and disorienting spaces.
+              <br />
               <br />
               Join us in the world of Backrooms, where every message sent is a
               step closer to building lasting connections and unforgettable
